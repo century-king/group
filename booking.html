@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Booking System</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 30px;
+      background: #f2f2f2;
+    }
+
+    form {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      width: 300px;
+      margin-bottom: 20px;
+    }
+
+    input, button {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    #bookings {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+    }
+
+    li {
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Book an Appointment</h2>
+
+  <form id="bookingForm">
+    <input type="text" id="name" placeholder="Your Name" required>
+    <input type="date" id="date" required>
+    <input type="time" id="time" required>
+    <button type="submit">Book Now</button>
+  </form>
+
+  <div id="bookings">
+    <h3>Bookings:</h3>
+    <ul id="bookingList"></ul>
+  </div>
+
+  <script>
+    const form = document.getElementById("bookingForm");
+    const bookingList = document.getElementById("bookingList");
+
+    form.addEventListener("submit", function(event) {
+      event.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const date = document.getElementById("date").value;
+      const time = document.getElementById("time").value;
+
+      const bookingItem = document.createElement("li");
+      bookingItem.textContent = `${name} booked for ${date} at ${time}`;
+
+      bookingList.appendChild(bookingItem);
+      form.reset();
+    });
+  </script>
+
+</body>
+</html>
